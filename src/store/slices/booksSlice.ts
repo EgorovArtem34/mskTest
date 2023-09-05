@@ -1,5 +1,3 @@
-import { PayloadAction } from "@reduxjs/toolkit";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosError } from "axios";
 import { createUrl } from "./../../utils/api";
@@ -85,8 +83,8 @@ const booksSlice = createSlice({
         state.errors.fetchBooksErr = null;
         state.isLoadings.fetchBooksLoading = true;
       })
-      .addCase(fetchBooks.rejected, (state, { payload }: PayloadAction<any>) => {
-        console.log(typeof payload);
+      .addCase(fetchBooks.rejected, (state, action) => {
+        const payload = action.payload as AxiosError<IError>;
         state.errors.fetchBooksErr = payload.message;
         state.isLoadings.fetchBooksLoading = false;
       })
