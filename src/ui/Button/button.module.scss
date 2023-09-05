@@ -1,0 +1,21 @@
+.button {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0.8em;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.search {
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: var(--light-green, #1e9bae);
+  color: white;
+
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    background-color: var(--green, #0e6977);
+  }
+}
