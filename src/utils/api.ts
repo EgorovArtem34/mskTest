@@ -25,12 +25,13 @@ export const createUrl = (
 
   const queryParams = [
     categoryParam,
+    sortingParam,
     startIndexParam,
     maxResultParam,
-    sortingParam,
     keyParam,
   ]
     .filter((param) => param.length > 0)
     .join("&");
+  console.log(queryParams);
   return [apiUrl, queryParams].join("/");
 };

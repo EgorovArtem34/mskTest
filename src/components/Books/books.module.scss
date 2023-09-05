@@ -7,7 +7,16 @@
 
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   grid-gap: 1em;
   margin-bottom: 10px;
+}
+
+.countBooks {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.notFound {
+  text-align: center;
 }

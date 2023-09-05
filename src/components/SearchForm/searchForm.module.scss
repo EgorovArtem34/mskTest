@@ -1,0 +1,50 @@
+.formSearch {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  min-width: 400px;
+  margin-bottom: 10px;
+}
+
+.inputContainer {
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.inputSearch {
+  padding: 10px 10px 10px 25px;
+  // flex: 1 1 400px;
+  width: 100%;
+  min-height: 38px;
+  border: 1px solid hsla(0, 4%, 82%, 0.197);
+  border-radius: 15px;
+  outline: none;
+  background-color: hsla(0, 4%, 82%, 0.197);
+  color: black;
+
+  &:focus,
+  &:hover {
+    background-color: white;
+    border: 1px solid #2684ff;
+  }
+
+  &:focus + .inputLoupe,
+  &:hover + .inputLoupe {
+    opacity: 1;
+  }
+}
+
+.inputLoupe {
+  position: absolute;
+  width: 16px;
+  margin-left: 5px;
+  height: 16px;
+  opacity: 0.5;
+  border: none;
+  color: rgba(0, 0, 0, 0.848);
+}

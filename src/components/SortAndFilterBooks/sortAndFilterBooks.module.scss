@@ -1,0 +1,23 @@
+.filterAndSort {
+  display: flex;
+  gap: 15px;
+}
+
+.select {
+  padding: 0.5em;
+  margin-left: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  flex-grow: 1;
+  outline: none;
+
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+
+  &:focus,
+  &:active {
+    border: 1px solid #2684ff;
+  }
+}

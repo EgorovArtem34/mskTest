@@ -14,3 +14,7 @@ export const sortingVariants: SortEnum[] = [
   SortEnum.Relevance,
   SortEnum.Newest,
 ];
+
+export const regexForBookId = /\/([^/]+)$/;
+
+// export const minQueryLength = 3;
