@@ -3,39 +3,50 @@ import { AiOutlineSearch } from "react-icons/ai";
 import styles from "./searchBooks.module.scss";
 import { Button } from "../../ui/Button/Button";
 import { categories, sortingVariants } from "../../utils/constants";
-import { SortEnum } from "../../types";
+import { CategoryType, SortEnum } from "../../types";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import {
+  setCategoryQuery,
+  setSearchQuery,
+  setSortingBy,
+} from "../../store/slices/booksSlice";
 
 const minQueryLength = 3;
 
 export const SearchBooks = () => {
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const dispatch = useAppDispatch();
   const [isShortQuery, setIsShortQuery] = useState<boolean>(false);
-  const [activeCategory, setActiveCategory] = useState("all");
-  const [sortingBy, setSortingBy] = useState(sortingVariants[0]);
+  const [inputSearchValue, setInputSearchValue] = useState("");
+  const { sortingBy, categoryQuery } = useAppSelector(
+    (state) => state.booksSlice
+  );
 
   useEffect(() => {
-    const isQueryShort = searchQuery.length <= minQueryLength;
+    const isQueryShort = inputSearchValue.length <= minQueryLength;
     if (isQueryShort !== isShortQuery) {
       setIsShortQuery(isQueryShort);
     }
-  }, [isShortQuery, searchQuery.length]);
+  }, [isShortQuery, inputSearchValue.length]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(searchQuery);
+    dispatch(setSearchQuery(inputSearchValue));
   };
+
   const handleCategory = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { value } = event.target;
-    setActiveCategory(value);
+    dispatch(setCategoryQuery(value as CategoryType));
   };
+
   const handleSort = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { value } = event.target;
-    setSortingBy(value as SortEnum);
+    dispatch(setSortingBy(value as SortEnum));
   };
+
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>Search for books</h1>
@@ -43,8 +54,8 @@ export const SearchBooks = () => {
         <input
           type="search"
           placeholder="search books..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          value={inputSearchValue}
+          onChange={(e) => setInputSearchValue(e.target.value)}
           className={styles.inputSearch}
         />
         <div className={styles.inputLoupe}>
@@ -61,7 +72,7 @@ export const SearchBooks = () => {
           <select
             name="categories"
             onChange={handleCategory}
-            value={activeCategory}
+            value={categoryQuery}
             placeholder="Не выбрано"
             className={styles.select}
             required

@@ -9,9 +9,9 @@
 }
 
 .search {
-  border: 1px solid white;
+  border: none;
   border-radius: 20px;
-  background-color: var(--light-green, #1e9bae);
+  background-color: var(--light-green, #118a9d);
   color: white;
 
   &:hover:not(:disabled),

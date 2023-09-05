@@ -1,11 +1,11 @@
-import { SearchBooks } from '../../components/SearchBooks/SearchBooks';
-import styles from './mainPage.module.scss';
+import { Books } from "../../components/Books/Books";
+import { SearchBooks } from "../../components/SearchBooks/SearchBooks";
 
 export const MainPage = () => {
   return (
     <>
       <SearchBooks />
-      <main>...</main>
+      <Books />
     </>
-  )
-}
+  );
+};
