@@ -48,3 +48,9 @@
   border: none;
   color: rgba(0, 0, 0, 0.848);
 }
+
+@media screen and (max-width: 530px) {
+  .formSearch {
+    min-width: 250px;
+  }
+}
