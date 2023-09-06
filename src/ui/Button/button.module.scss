@@ -9,11 +9,20 @@
 }
 
 .search {
-  border: none;
   padding: 1em 2em;
   border-radius: 20px;
+}
+
+.more {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.search,
+.more {
   background-color: var(--light-green, #118a9d);
   color: white;
+  border: none;
 
   &:hover:not(:disabled),
   &:focus:not(:disabled) {

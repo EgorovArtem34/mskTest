@@ -16,5 +16,5 @@ export const sortingVariants: SortEnum[] = [
 ];
 
 export const regexForBookId = /\/([^/]+)$/;
-
+export const defaultStartIndex = 0;
 // export const minQueryLength = 3;

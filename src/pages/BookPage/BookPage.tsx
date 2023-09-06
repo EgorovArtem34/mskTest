@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { regexForBookId } from "../../utils/constants";
 import { IBook } from "../../types";
@@ -8,6 +9,7 @@ import { SearchBooks } from "../../components/SearchBooks/SearchBooks";
 
 export const BookPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [currentBook, setCurrentBook] = useState<IBook>();
   const { books } = useAppSelector((state) => state.booksSlice);
@@ -23,13 +25,15 @@ export const BookPage = () => {
     }
   }, [location.pathname, dispatch, books]);
 
-  if (!currentBook) {
-    return null;
-  }
+  useEffect(() => {
+    if (books.length === 0) {
+      navigate("/");
+    }
+  }, [books, navigate]);
 
   const {
     volumeInfo: { imageLinks, authors, categories, title, description },
-  } = currentBook;
+  } = currentBook as IBook;
 
   return (
     <>

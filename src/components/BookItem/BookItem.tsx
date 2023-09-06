@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { IBook } from "../../types";
 import styles from "./bookItem.module.scss";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const BookItem = ({ book }: { book: IBook }) => {
   const {
     volumeInfo: { imageLinks, authors, categories, title },

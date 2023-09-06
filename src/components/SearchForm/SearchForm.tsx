@@ -1,17 +1,25 @@
-import { useState, useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { fetchBooks, setSearchQuery } from "../../store/slices/booksSlice";
+import {
+  fetchBooks,
+  setSearchQuery,
+  setStartIndex,
+} from "../../store/slices/booksSlice";
 import styles from "./searchForm.module.scss";
 import { Button } from "../../ui/Button/Button";
 import { SortAndFilterBooks } from "../SortAndFilterBooks/SortAndFilterBooks";
+import { defaultStartIndex } from "../../utils/constants";
 
 export const SearchForm = () => {
   const dispatch = useAppDispatch();
   const { sortingBy, categoryQuery, searchQuery, startIndex, booksPerFetch } =
     useAppSelector((state) => state.booksSlice);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (startIndex !== defaultStartIndex) {
+      dispatch(setStartIndex(defaultStartIndex));
+    }
     dispatch(
       fetchBooks({
         sortingBy,
