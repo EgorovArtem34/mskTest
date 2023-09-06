@@ -32,6 +32,5 @@ export const createUrl = (
   ]
     .filter((param) => param.length > 0)
     .join("&");
-  console.log(queryParams);
   return [apiUrl, queryParams].join("/");
 };

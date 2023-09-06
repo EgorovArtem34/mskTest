@@ -31,9 +31,13 @@ export const BookPage = () => {
     }
   }, [books, navigate]);
 
+  if (!currentBook) {
+    return null;
+  }
+
   const {
     volumeInfo: { imageLinks, authors, categories, title, description },
-  } = currentBook as IBook;
+  } = currentBook;
 
   return (
     <>

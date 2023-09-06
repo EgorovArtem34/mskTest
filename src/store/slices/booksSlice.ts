@@ -24,7 +24,6 @@ export const fetchBooks = createAsyncThunk(
     );
     try {
       const { data }: { data: IFetchDataBooks } = await axios.get(createdUrl);
-      console.log(data);
       return data;
     } catch (err) {
       const error = err as AxiosError<IError>;
